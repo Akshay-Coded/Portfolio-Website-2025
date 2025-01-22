@@ -1,0 +1,240 @@
+:root {
+    --primary-color: #6a1b9a;
+    --secondary-color: #4a148c;
+    --accent-color: #9c27b0;
+    --text-color: #e0e0e0;
+    --bg-color: #121212;
+    --card-bg-color: #000000;
+    --hover-color: #7b1fa2;
+    --spooky-color-1: #ff00de;
+    --spooky-color-2: #61125d;
+    --spooky-color-3: #70007a;
+}
+
+body {
+    padding-top: 56px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dark-theme {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    transition: background-color 0.3s ease;
+    background-color: rgba(18, 18, 18, 0.8);
+}
+
+.navbar.scrolled {
+    background-color: rgba(18, 18, 18, 0.95) !important;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+}
+
+#home {
+    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('/bg-img.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--text-color);
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 0, 222, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(0, 255, 0, 0.1) 0%, transparent 20%);
+    animation: spookyBackground 10s ease-in-out infinite alternate;
+}
+
+@keyframes spookyBackground {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+#home h1, #home h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#home h2,
+#home p {
+    position: relative;
+    z-index: 1;
+}
+
+#home h2::after,
+#home p::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--spooky-color-2);
+    clip-path: inset(0 100% 0 0);
+    animation: glitchText 4s infinite linear alternate-reverse;
+}
+
+@keyframes glitchText {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    5% {
+        clip-path: inset(0 80% 0 0);
+    }
+    10% {
+        clip-path: inset(0 100% 0 0);
+    }
+    15% {
+        clip-path: inset(0 90% 0 0);
+    }
+    20% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0 100% 0 0);
+    }
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
+}
+
+/* Skills Section */
+.skill-card {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.2);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+/* Contact Section */
+.contact-card {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: var(--accent-color);
+}
+
+.contact-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--accent-color);
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 250px;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-color);
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    section {
+        min-height: auto;
+        padding: 4rem 0;
+    }
+
+    .contact-card {
+        flex-direction: column;
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.txt{
+    color: white;
+}
+
+.txt-sub{
+    color: #9c27b0;
+}
